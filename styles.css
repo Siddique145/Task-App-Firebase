@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.p-4 {
+  background-color: blueviolet;
+  text-align: center;
+  color: white;
+  border-bottom: 2px solid blueviolet;
+  box-shadow: 0 0 10px blueviolet;
+}
+
+nav img {
+  height: 32px;
+}
+
+b {
+  width: 100%;
+  display: inline-block;
+}
+li {
+  margin-bottom: 4px;
+}
+element.style {
+  width: 100px;
+}
+.main {
+  height: 100vh;
+  margin-bottom: 30px;
+}
+.box1 {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.head input {
+  width: 100%;
+  color: black;
+  font-weight: 500;
+  font-size: large;
+  border: 1px solid blueviolet;
+  border-radius: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+  outline: none;
+  text-transform: capitalize;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.head input:focus {
+  border-color: blueviolet;
+  box-shadow: 0 0 5px blueviolet;
+}
+.head input::placeholder {
+  text-transform: capitalize;
+}
+.box1 .btn {
+  border-radius: 8px;
+}
+#add_number {
+  padding: 8px;
+  font-weight: 500;
+  background-color: blueviolet;
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+  color: white;
+  padding: 10px 20px;
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+#add_number:hover {
+  border-color: blueviolet;
+  box-shadow: 0 0 10px blueviolet;
+}
+
+.box2 {
+  height: 90vh;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.sub_box3 {
+  height: 90vh;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid blueviolet;
+  border-radius: 20px;
+  width: 100%;
+}
+.sub_box2 {
+  height: 80vh;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  overflow-y: scroll;
+  
+}
+.box2 .sub_box3:hover {
+  border-color: blueviolet;
+  box-shadow: 0 0 20px blueviolet;
+}
+
+#numbers_list {
+  padding: 0;
+  margin: 0;
+}
+
+#numbers_list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#numbers_list li b {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#numbers_list li button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.3s;
+}
+
+#numbers_list li button:hover {
+  color: rgb(236, 69, 39);
+  gap: 50px;
+}
+
+/* For WebKit (Chrome, Safari, Opera) */
+.sub_box2::-webkit-scrollbar {
+  max-height: 6px; /* Width of the scrollbar */
+  height: 20px; /* Color of the track */
+}
+
+.sub_box2::-webkit-scrollbar-track {
+  background: white;
+}
+
+.sub_box2::-webkit-scrollbar-thumb {
+  background: white; /* Color of the thumb */
+  border-radius: 3px; /* Rounded corners of the thumb */
+}
+
+.sub_box2::-webkit-scrollbar-thumb:hover {
+  background: white; /* Color of the thumb on hover */
+}
+
+footer{
+    height: 50px;
+    background-color: blueviolet;
+    text-align: center;
+    border-radius: 10px;
+
+}
+.last{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: larger;
+    font-weight: 500;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.lasttext{
+    margin-top: 10px;
+    text-align: center;
+}
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+    background-color: blueviolet;
+    background-image: none;
+}
+*, :after, :before {
+    border: 0 solid blueviolet;
+    box-sizing: border-box;
+}
