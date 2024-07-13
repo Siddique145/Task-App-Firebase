@@ -24,7 +24,8 @@ const firebaseConfig = {
   measurementId: "G-11N5F7YV0G",
 };
 
-// Initialize Firebase
+
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
@@ -33,8 +34,9 @@ const numbers_list = document.getElementById("numbers_list");
 const add_number = document.getElementById("add_number");
 const user_input = document.getElementById("user_input");
 const numberCollection = collection(db, "number");
+const loader = document.getElementById("loader");
 
-console.log(user_input.value);
+loader.style.display = "none"; 
 
 getNumbersFromDb();
 add_number.addEventListener("click", async () => {
@@ -61,35 +63,40 @@ add_number.addEventListener("click", async () => {
 });
 
 async function getNumbersFromDb() {
-  const querySnapshot = await getDocs(numberCollection);
-  numbers_list.innerHTML = "";
-  querySnapshot.forEach((doc) => {
-    var obj = doc.data();
-    const li = `<li id= ${doc.id}> <b>${obj.number}</b>  <button> <i class="fa-solid fa-pen-to-square"></i> </button> <button> <i class="fa-solid fa-trash"></i> </button>  </li>`;
-    numbers_list.innerHTML += li;
-  });
+  try {
+    loader.style.display = "flex"; 
+    const querySnapshot = await getDocs(numberCollection);
+    numbers_list.innerHTML = "";
+    querySnapshot.forEach((doc) => {
+      var obj = doc.data();
+      const li = `<li id="${doc.id}"> <b>${obj.number}</b>  <button> <i class="fa-solid fa-pen-to-square"></i> </button> <button> <i class="fa-solid fa-trash"></i> </button>  </li>`;
+      numbers_list.innerHTML += li;
+    });
 
-  numbers_list.childNodes.forEach((node) => {
-    node.children[1].addEventListener("click", async function () {
-      node.children[1].disabled = false;
-      const docRef = doc(db, "number", this.parentNode.id);
-      const newNumber = prompt("Edit Your Task");
+    numbers_list.childNodes.forEach((node) => {
+      node.children[1].addEventListener("click", async function () {
+        node.children[1].disabled = true;
+        const docRef = doc(db, "number", this.parentNode.id);
+        const newNumber = prompt("Edit Your Task");
 
-      await updateDoc(docRef, {
-        number: newNumber,
+        await updateDoc(docRef, {
+          number: newNumber,
+        });
+        console.log("Document updated");
+        getNumbersFromDb();
       });
-      console.log("Document update hogya he");
-      getNumbersFromDb();
-      node.children[1].disabled = true;
-    });
 
-    node.children[2].addEventListener("click", async function () {
-      node.children[2].disabled = false;
-      const docRef = doc(db, "number", this.parentNode.id);
-      await deleteDoc(docRef);
-      node.children[2].disabled = true;
-      console.log("Doc deleted");
-      getNumbersFromDb();
+      node.children[2].addEventListener("click", async function () {
+        node.children[2].disabled = true;
+        const docRef = doc(db, "number", this.parentNode.id);
+        await deleteDoc(docRef);
+        console.log("Document deleted");
+        getNumbersFromDb();
+      });
     });
-  });
+  } catch (error) {
+    console.error("Error fetching documents: ", error);
+  } finally {
+    loader.style.display = "none"; 
+  }
 }
