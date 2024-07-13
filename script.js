@@ -73,7 +73,7 @@ async function getNumbersFromDb() {
     node.children[1].addEventListener("click", async function () {
       node.children[1].disabled = false;
       const docRef = doc(db, "number", this.parentNode.id);
-      const newNumber = prompt("New Number");
+      const newNumber = prompt("Edit Your Task");
 
       await updateDoc(docRef, {
         number: newNumber,
